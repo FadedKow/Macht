@@ -1,0 +1,26 @@
+Help:
+help - Displays commands
+fun - Displays fun commands
+Misc - Displays miscellaneous commands
+NSFW - Displays NSFW commands
+
+Fun:
+yoight - Sends yoights
+ara - Sends ara ara in chat
+gay <user> - Gay rating of mentioned user
+cat - Random cat image
+neko - Random neko image
+foxgirl - Random foxgirl image
+pat - Pat mentioned user
+
+
+Misc:
+embed <titletext> <fieldtext> - Sends your message as an embed
+cls - Clears the console window
+test - Test command
+
+Tools:
+iplookip <ip> - Displays info on ip
+
+NSFW:
+nsfw_neko - Random NSFW neko gif
