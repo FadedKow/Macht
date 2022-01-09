@@ -1,2 +1,2 @@
 # Macht
-A discord selfbot
+A discord selfbot made by Founder#8300
