@@ -54,7 +54,6 @@ def userConnected():
     print("║║║║║║╔╗║╔═╣╔╗║║")
     print("║║║║║║╔╗║╚═╣║║║╚╗")
     print("╚╝╚╝╚╩╝╚╩══╩╝╚╩═╝")
-    #print(Center.XCenter(Colorate.Vertical(Colors.blue_to_purple, "Macht Selfbot.", 1)))
     print(f'{Fore.LIGHTMAGENTA_EX}Status:  {Fore.GREEN}Connected!{resetClr}')
     print(f'{Fore.LIGHTMAGENTA_EX}Account: {bot.user.name} [Last Login: {lastTime}] [ID: {bot.user.id}]{resetClr}')
     print(f'{Fore.LIGHTMAGENTA_EX}Prefix:  {Fore.LIGHTCYAN_EX}{prefix}{resetClr}')
@@ -101,7 +100,7 @@ async def test(ctx):
                 j = resp.json()
                 embed= discord.Embed(colour=hexColor, title=f"Neko",description="Random neko by nekos.life")
                 embed.set_image(url=j["neko"])
-                embed.set_footer(text=" Macht Selfbot - Made by Founder#8300")
+                embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
                 await ctx.send(embed=embed)
             except discord.HTTPException:
                 await ctx.send(j["neko"])
@@ -115,14 +114,13 @@ async def help(ctx):
     await ctx.message.delete()
     print(f'{commandLog}help')
     embed = discord.Embed(colour=hexColor, title="Macht", description="<> = required, [] = optional")
-    #embed.add_field(name="Tip:", value="<> = required, [] = optional", inline=False)
     embed.add_field(name=f"`{prefix}help`", value=f"*Displays commands*", inline=False)
     embed.add_field(name=f"`{prefix}fun`", value=f"*Displays fun commands*", inline=False)
     embed.add_field(name=f"`{prefix}misc`", value=f"*Displays miscellaneous commands*", inline=False)
     embed.add_field(name=f"`{prefix}tools`", value=f"*Displays tool commands*", inline=False)
     embed.add_field(name=f"`{prefix}nsfw`", value=f"*Displays NSFW commands*", inline=False)
     embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
-    embed.set_footer(text=" Macht Selfbot - Made by Founder#8300")
+    embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
       await ctx.send(embed=embed)
     except discord.HTTPException:
@@ -141,7 +139,7 @@ async def fun(ctx):
     embed.add_field(name=f"`{prefix}foxgirl`", value=f"*Random foxgirl image*", inline=False)
     embed.add_field(name=f"`{prefix}pat <user>`", value=f"*Pat mentioned user*", inline=False)
     embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
-    embed.set_footer(text=" Macht Selfbot - Made by Founder#8300")
+    embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
       await ctx.send(embed=embed)
     except discord.HTTPException:
@@ -156,7 +154,7 @@ async def misc(ctx):
     embed.add_field(name=f"`{prefix}cls`", value=f"*Clears the console window*", inline=False)
     embed.add_field(name=f"`{prefix}test`", value=f"*Test command*", inline=False)
     embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
-    embed.set_footer(text=" Macht Selfbot - Made by Founder#8300")
+    embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
       await ctx.send(embed=embed)
     except discord.HTTPException:
@@ -169,7 +167,7 @@ async def tools(ctx):
     embed = discord.Embed(colour=hexColor, title="Tools")
     embed.add_field(name=f"`{prefix}iplookup <ip>`", value=f"*Displays info on ip*", inline=False)
     embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
-    embed.set_footer(text=" Macht Selfbot - Made by Founder#8300")
+    embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
       await ctx.send(embed=embed)
     except discord.HTTPException:
@@ -182,7 +180,7 @@ async def nsfw(ctx):
     embed = discord.Embed(colour=hexColor, title="NSFW")
     embed.add_field(name=f"`{prefix}nsfw_neko`", value=f"*Random NSFW neko gif*", inline=False)
     embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
-    embed.set_footer(text=" Macht Selfbot - Made by Founder#8300")
+    embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
       await ctx.send(embed=embed)
     except discord.HTTPException:
@@ -211,7 +209,7 @@ async def gay(ctx, mentionedUser: str=None):
   #-----Error-----
   embedError = discord.Embed(colour=hexColor, title="Error", description=f"No user has been mentioned")
   embedError.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
-  embedError.set_footer(text=" Macht Selfbot - Made by Founder#8300")
+  embedError.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
   #-----Error-----
   print(f'{commandLog}gay')
   if mentionedUser is None:
@@ -225,7 +223,7 @@ async def gay(ctx, mentionedUser: str=None):
     gayPercentage = 0
   embed = discord.Embed(colour=hexColor, title="Gay Meter", description=f"**{mentionedUser}** is **{gayPercentage}% gay**")
   embed.set_thumbnail(url="https://i.dlpng.com/static/png/1210414-rainbow-flag-png-transparent-image-png-images-rainbow-flag-png-400_400_preview.png?width=341&height=341")
-  embed.set_footer(text=" Macht Selfbot - Made by Founder#8300")
+  embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
   try:
     await ctx.send(embed=embed)
   except discord.HTTPException:
@@ -237,8 +235,7 @@ async def cat(ctx):
     print(f'{commandLog}cat')
     embed = discord.Embed(colour=hexColor, title="Cat",description="A random cat image by nekos.life lib")
     embed.set_image(url=nekos.cat())
-    embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
-    embed.set_footer(text=" Macht Selfbot - Made by Founder#8300")
+    embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
       await ctx.send(embed=embed)
     except discord.HTTPException:
@@ -250,8 +247,7 @@ async def gato(ctx):
     print(f'{commandLog}gato')
     embed = discord.Embed(colour=hexColor, title="Gato",description="A random gato (cat) image by nekos.life lib")
     embed.set_image(url=nekos.cat())
-    embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
-    embed.set_footer(text=" Macht Selfbot - Made by Founder#8300")
+    embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
       await ctx.send(embed=embed)
     except discord.HTTPException:
@@ -268,8 +264,7 @@ async def neko(ctx):
                 j = resp.json()
                 embed= discord.Embed(colour=hexColor, title=f"Neko",description="Random neko by nekos.life")
                 embed.set_image(url=j["neko"])
-                embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
-                embed.set_footer(text=" Macht Selfbot - Made by Founder#8300")
+                embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
                 await ctx.send(embed=embed)
             except discord.HTTPException:
                 await ctx.send(j["neko"])
@@ -282,8 +277,7 @@ async def foxgirl(ctx):
     print(f'{commandLog}foxgirl')
     embed = discord.Embed(colour=hexColor, title="Fox Girl",description="A random foxgirl image by nekos.life lib")
     embed.set_image(url=nekos.img("fox_girl"))
-    embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
-    embed.set_footer(text=" Macht Selfbot - Made by Founder#8300")
+    embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
       await ctx.send(embed=embed)
     except discord.HTTPException:
@@ -296,7 +290,7 @@ async def pat(ctx, user: str=None):
     #-----No Mention-----
     embedNoMen = discord.Embed(colour=hexColor, title="Error",description="No user was mentioned")
     embedNoMen.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
-    embedNoMen.set_footer(text=" Macht Selfbot - Made by Founder#8300")
+    embedNoMen.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     #-----End-----
     if user is None:
       await ctx.send(embed=embedNoMen)
@@ -304,8 +298,7 @@ async def pat(ctx, user: str=None):
     else:
      embed = discord.Embed(colour=hexColor, title="Pat",description=f"***{bot.user.name}*** *pats* ***{user}***")
      embed.set_image(url=nekos.img("pat"))
-     embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
-     embed.set_footer(text=" Macht Selfbot - Made by Founder#8300")
+     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
      try:
        await ctx.send(embed=embed)
      except discord.HTTPException:
@@ -350,7 +343,7 @@ async def iplookup(ctx, ip: str = None):
                 if "Wrong ip" in resp.text:
                     embed= discord.Embed(colour=hexColor, title=f"Error",description="Invalid IP Address")
                     embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
-                    embed.set_footer(text=" Macht Selfbot - Made by Founder#8300")
+                    embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
                     await ctx.send(embed=embed)
                     return
                 else:
@@ -366,7 +359,7 @@ async def iplookup(ctx, ip: str = None):
                         embed.add_field(name=f'Timezone', value=f'{j["timezone"]}', inline=True)
                         embed.add_field(name=f'Organization', value=f'{j["org"]}', inline=True)
                         embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
-                        embed.set_footer(text=" Macht Selfbot - Made by Founder#8300")
+                        embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
                         await ctx.send(embed=embed)
                     except discord.HTTPException:
                         await ctx.send(f'**{ip} Info**\n\nCity: {j["city"]}\nRegion: {j["region"]}\nCountry: {j["country"]}\nCoordinates: {j["loc"]}\nPostal: {j["postal"]}\nTimezone: {j["timezone"]}\nOrganization: {j["org"]}')
@@ -383,8 +376,7 @@ async def nsfw_neko(ctx):
     print(f'{commandLog}nsfw_neko')
     embed = discord.Embed(colour=hexColor, title="NSFW Neko",description="A random NSFW neko gif by nekos.life lib")
     embed.set_image(url=nekos.img("nsfw_neko_gif"))
-    embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
-    embed.set_footer(text=" Macht Selfbot - Made by Founder#8300")
+    embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
       await ctx.send(embed=embed)
     except discord.HTTPException:
