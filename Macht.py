@@ -7,6 +7,7 @@ import requests
 import math
 import itertools
 import random
+import socket
 import nekos
 from threading import Thread
 import threading
@@ -166,6 +167,7 @@ async def tools(ctx):
     print(f'{commandLog}tools')
     embed = discord.Embed(colour=hexColor, title="Tools")
     embed.add_field(name=f"`{prefix}iplookup <ip>`", value=f"*Displays info on ip*", inline=False)
+    embed.add_field(name=f"`{prefix}resolve <domain>`", value=f"*Resolves domain to ipv4*", inline=False)
     embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
@@ -365,6 +367,36 @@ async def iplookup(ctx, ip: str = None):
                         await ctx.send(f'**{ip} Info**\n\nCity: {j["city"]}\nRegion: {j["region"]}\nCountry: {j["country"]}\nCoordinates: {j["loc"]}\nPostal: {j["postal"]}\nTimezone: {j["timezone"]}\nOrganization: {j["org"]}')
         except Exception as e:
             await ctx.send(f"Error: {e}")
+
+@bot.command()
+async def resolve(ctx, domain: str=None):
+    await ctx.message.delete()
+    print(f'{commandLog}resolve')
+    #Invalid Domain
+    domainErrorEmbed = discord.Embed(colour=hexColor, title="Domain Error",description="No Domain Specified")
+    domainErrorEmbed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
+    domainErrorEmbed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+    #Invalid Domain End
+    #-----
+    #Error
+    hostErrorEmbed = discord.Embed(colour=hexColor, title="Domain Error",description="Invalid Domain Name")
+    hostErrorEmbed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
+    hostErrorEmbed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+    #Error End
+    if domain is None:
+      await ctx.send(embed=domainErrorEmbed)
+      return
+    else:
+     try:
+      embed = discord.Embed(colour=hexColor, title=" ")
+      embed.add_field(name="Domain: ", value=domain, inline=True)
+      embed.add_field(name="Ipv4", value=str(socket.gethostbyname(domain)), inline=True)
+      try:
+        await ctx.send(embed=embed)
+      except discord.HTTPException:
+        await ctx.send("An error has occured, are embeds allowed here?")
+     except:
+      await ctx.send(embed=hostErrorEmbed)
 
 
 
