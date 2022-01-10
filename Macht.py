@@ -139,6 +139,7 @@ async def fun(ctx):
     embed.add_field(name=f"`{prefix}neko`", value=f"*Random neko image*", inline=False)
     embed.add_field(name=f"`{prefix}foxgirl`", value=f"*Random foxgirl image*", inline=False)
     embed.add_field(name=f"`{prefix}pat <user>`", value=f"*Pat mentioned user*", inline=False)
+    embed.add_field(name=f"`{prefix}cuddle <user>`", value=f"*Cuddle mentioned user*", inline=False)
     embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
@@ -300,6 +301,27 @@ async def pat(ctx, user: str=None):
     else:
      embed = discord.Embed(colour=hexColor, title="Pat",description=f"***{bot.user.name}*** *pats* ***{user}***")
      embed.set_image(url=nekos.img("pat"))
+     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+     try:
+       await ctx.send(embed=embed)
+     except discord.HTTPException:
+       await ctx.send("An error has occured, are embeds allowed here?")
+
+@bot.command()
+async def cuddle(ctx, user: str=None):
+    await ctx.message.delete()
+    print(f'{commandLog}cuddle')
+    #-----No Mention-----
+    embedNoMen = discord.Embed(colour=hexColor, title="Error",description="No user was mentioned")
+    embedNoMen.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
+    embedNoMen.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+    #-----End-----
+    if user is None:
+      await ctx.send(embed=embedNoMen)
+      return
+    else:
+     embed = discord.Embed(colour=hexColor, title="Cuddle",description=f"***{bot.user.name}*** *cuddles* ***{user}***")
+     embed.set_image(url=nekos.img("cuddle"))
      embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
      try:
        await ctx.send(embed=embed)

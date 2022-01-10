@@ -11,7 +11,8 @@ gay <user> - Gay rating of mentioned user
 cat - Random cat image
 neko - Random neko image
 foxgirl - Random foxgirl image
-pat - Pat mentioned user
+pat <user> - Pat mentioned user
+cuddle <user> - Cuddle mentioned user
 
 
 Misc:
