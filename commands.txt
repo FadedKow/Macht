@@ -21,6 +21,7 @@ test - Test command
 
 Tools:
 iplookip <ip> - Displays info on ip
+resolve <domain> - Resolves domain to an ipv4 address
 
 NSFW:
 nsfw_neko - Random NSFW neko gif

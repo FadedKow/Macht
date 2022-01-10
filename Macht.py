@@ -167,7 +167,7 @@ async def tools(ctx):
     print(f'{commandLog}tools')
     embed = discord.Embed(colour=hexColor, title="Tools")
     embed.add_field(name=f"`{prefix}iplookup <ip>`", value=f"*Displays info on ip*", inline=False)
-    embed.add_field(name=f"`{prefix}resolve <domain>`", value=f"*Resolves domain to ipv4*", inline=False)
+    embed.add_field(name=f"`{prefix}resolve <domain>`", value=f"*Resolves domain to an ipv4 address*", inline=False)
     embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
