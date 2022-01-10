@@ -140,6 +140,9 @@ async def fun(ctx):
     embed.add_field(name=f"`{prefix}foxgirl`", value=f"*Random foxgirl image*", inline=False)
     embed.add_field(name=f"`{prefix}pat <user>`", value=f"*Pat mentioned user*", inline=False)
     embed.add_field(name=f"`{prefix}cuddle <user>`", value=f"*Cuddle mentioned user*", inline=False)
+    embed.add_field(name=f"`{prefix}smug`", value=f"*Random smug face*", inline=False)
+    embed.add_field(name=f"`{prefix}kiss <user>`", value=f"*Kiss mentioned user*", inline=False)
+    embed.add_field(name=f"`{prefix}hug <user>`", value=f"*Hug mentioned user*", inline=False)
     embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
@@ -182,6 +185,7 @@ async def nsfw(ctx):
     print(f'{commandLog}nsfw')
     embed = discord.Embed(colour=hexColor, title="NSFW")
     embed.add_field(name=f"`{prefix}nsfw_neko`", value=f"*Random NSFW neko gif*", inline=False)
+    embed.add_field(name=f"`{prefix}hentai`", value=f"*Random hentai*", inline=False)
     embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
@@ -328,6 +332,61 @@ async def cuddle(ctx, user: str=None):
      except discord.HTTPException:
        await ctx.send("An error has occured, are embeds allowed here?")
 
+@bot.command()
+async def smug(ctx):
+    await ctx.message.delete()
+    print(f'{commandLog}smug')
+    embed = discord.Embed(colour=hexColor, title="Smug",description="Random smug face by nekos.life lib")
+    embed.set_image(url=nekos.img("smug"))
+    embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+    try:
+      await ctx.send(embed=embed)
+    except discord.HTTPException:
+      await ctx.send("An error has occured, are embeds allowed here?")
+
+@bot.command()
+async def kiss(ctx, user: str=None):
+    await ctx.message.delete()
+    print(f'{commandLog}kiss')
+    #-----No Mention-----
+    embedNoMen = discord.Embed(colour=hexColor, title="Error",description="No user was mentioned")
+    embedNoMen.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
+    embedNoMen.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+    #-----End-----
+    if user is None:
+      await ctx.send(embed=embedNoMen)
+      return
+    else:
+     embed = discord.Embed(colour=hexColor, title="Kiss <3",description=f"***{bot.user.name}*** *kisses* ***{user}***")
+     embed.set_image(url=nekos.img("kiss"))
+     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+     try:
+       await ctx.send(embed=embed)
+     except discord.HTTPException:
+       await ctx.send("An error has occured, are embeds allowed here?")
+
+@bot.command()
+async def hug(ctx, user: str=None):
+    await ctx.message.delete()
+    print(f'{commandLog}hug')
+    #-----No Mention-----
+    embedNoMen = discord.Embed(colour=hexColor, title="Error",description="No user was mentioned")
+    embedNoMen.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
+    embedNoMen.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+    #-----End-----
+    if user is None:
+      await ctx.send(embed=embedNoMen)
+      return
+    else:
+     embed = discord.Embed(colour=hexColor, title="Hug",description=f"***{bot.user.name}*** *hugs* ***{user}***")
+     embed.set_image(url=nekos.img("hug"))
+     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+     try:
+       await ctx.send(embed=embed)
+     except discord.HTTPException:
+       await ctx.send("An error has occured, are embeds allowed here?")
+
+
 
 
 
@@ -436,7 +495,17 @@ async def nsfw_neko(ctx):
     except discord.HTTPException:
       await ctx.send("An error has occured, are embeds allowed here?")
 
-
+@bot.command()
+async def hentai(ctx):
+    await ctx.message.delete()
+    print(f'{commandLog}hentai')
+    embed = discord.Embed(colour=hexColor, title="Hentai",description="Random hentai by nekos.life lib")
+    embed.set_image(url=nekos.img("hentai"))
+    embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+    try:
+      await ctx.send(embed=embed)
+    except discord.HTTPException:
+      await ctx.send("An error has occured, are embeds allowed here?")
 
 
 

@@ -13,6 +13,9 @@ neko - Random neko image
 foxgirl - Random foxgirl image
 pat <user> - Pat mentioned user
 cuddle <user> - Cuddle mentioned user
+smug - Random smug face
+kiss <user> - Kiss mentioned user
+hug <user> - Hug mentioned user
 
 
 Misc:
@@ -26,3 +29,4 @@ resolve <domain> - Resolves domain to an ipv4 address
 
 NSFW:
 nsfw_neko - Random NSFW neko gif
+hentai - Random hentai
