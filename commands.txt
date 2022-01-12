@@ -16,6 +16,7 @@ cuddle <user> - Cuddle mentioned user
 smug - Random smug face
 kiss <user> - Kiss mentioned user
 hug <user> - Hug mentioned user
+owoify <text> - Owo-ify your message (r's become w's)
 
 
 Misc:

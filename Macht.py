@@ -143,6 +143,7 @@ async def fun(ctx):
     embed.add_field(name=f"`{prefix}smug`", value=f"*Random smug face*", inline=False)
     embed.add_field(name=f"`{prefix}kiss <user>`", value=f"*Kiss mentioned user*", inline=False)
     embed.add_field(name=f"`{prefix}hug <user>`", value=f"*Hug mentioned user*", inline=False)
+    embed.add_field(name=f"`{prefix}owoify <text>`", value=f"*Owo-ify your message (r's become w's)*", inline=False)
     embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
@@ -385,6 +386,26 @@ async def hug(ctx, user: str=None):
        await ctx.send(embed=embed)
      except discord.HTTPException:
        await ctx.send("An error has occured, are embeds allowed here?")
+
+@bot.command()
+async def owoify(ctx, text: str=None):
+    await ctx.message.delete()
+    print(f'{commandLog}owoify')
+    #-----No Mention-----
+    embedNoMen = discord.Embed(colour=hexColor, title="Error",description="Please input a string to owo-ify")
+    embedNoMen.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
+    embedNoMen.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+    #-----End-----
+    if text is None:
+      await ctx.send(embed=embedNoMen)
+      return
+    else:
+     owoifiedMessage = nekos.owoify(text)
+     try:
+       await ctx.send(owoifiedMessage)
+     except discord.HTTPException:
+       await ctx.send("Uh oh, a fucky wucky has occured")
+
 
 
 
