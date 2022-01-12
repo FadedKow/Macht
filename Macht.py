@@ -49,7 +49,7 @@ print(f"{Fore.BLACK}=―――――――――――――――――――�
 
 def userConnected():
     print(f"{Fore.BLACK}=――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――={resetClr}")
-    print(f"{Fore.MAGENTA}╔═╗╔═╗     ╔╗─╔╗")
+    print(f"{Fore.MAGENTA}╔═╗╔═╗     ╔╗ ╔╗")
     print("║║╚╝║║     ║║╔╝╚╗")
     print("║╔╗╔╗╠══╦══╣╚╩╗╔╝")
     print("║║║║║║╔╗║╔═╣╔╗║║")
@@ -391,13 +391,13 @@ async def hug(ctx, user: str=None):
 async def owoify(ctx, text: str=None):
     await ctx.message.delete()
     print(f'{commandLog}owoify')
-    #-----No Mention-----
-    embedNoMen = discord.Embed(colour=hexColor, title="Error",description="Please input a string to owo-ify")
-    embedNoMen.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
-    embedNoMen.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+    #-----No Text-----
+    embedNoTextError = discord.Embed(colour=hexColor, title="Error",description="Please input a string to owo-ify")
+    embedNoTextError.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
+    embedNoTextError.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     #-----End-----
     if text is None:
-      await ctx.send(embed=embedNoMen)
+      await ctx.send(embed=embedNoTextError)
       return
     else:
      owoifiedMessage = nekos.owoify(text)
