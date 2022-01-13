@@ -94,19 +94,13 @@ async def test(ctx):
     await ctx.message.delete()
     print(f'{commandLog}test')
     await ctx.send("Macht Test")
+    embed = discord.Embed(colour=hexColor, title="Test",description="Embed Test")
+    embed.set_image(url=nekos.img("avatar"))
+    embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
-        with requests.session() as ses:
-            resp = ses.get(f'https://nekos.life/api/neko')
-            try:
-                j = resp.json()
-                embed= discord.Embed(colour=hexColor, title=f"Neko",description="Random neko by nekos.life")
-                embed.set_image(url=j["neko"])
-                embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
-                await ctx.send(embed=embed)
-            except discord.HTTPException:
-                await ctx.send(j["neko"])
-    except Exception as e:
-        await ctx.send(f"Error: {e}")
+      await ctx.send(embed=embed)
+    except discord.HTTPException:
+      await ctx.send("An error has occured, are embeds allowed here?")
 
 
 #-----Help Commands-----
@@ -144,6 +138,9 @@ async def fun(ctx):
     embed.add_field(name=f"`{prefix}kiss <user>`", value=f"*Kiss mentioned user*", inline=False)
     embed.add_field(name=f"`{prefix}hug <user>`", value=f"*Hug mentioned user*", inline=False)
     embed.add_field(name=f"`{prefix}owoify <text>`", value=f"*Owo-ify your message (r's become w's)*", inline=False)
+    embed.add_field(name=f"`{prefix}feed <user>`", value=f"*Feed mentioned user*", inline=False)
+    embed.add_field(name=f"`{prefix}poke <user>`", value=f"*Poke mentioned user*", inline=False)
+    embed.add_field(name=f"`{prefix}woof <user>`", value=f"*Woof woof*", inline=False)
     embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
@@ -159,6 +156,7 @@ async def misc(ctx):
     embed.add_field(name=f"`{prefix}embed <titletext> <fieldtext>`", value=f"*Sends your message as an embed,* ***add quotes around fieldtext***", inline=False)
     embed.add_field(name=f"`{prefix}cls`", value=f"*Clears the console window*", inline=False)
     embed.add_field(name=f"`{prefix}test`", value=f"*Test command*", inline=False)
+    embed.add_field(name=f"`{prefix}avatar`", value=f"*Get a free avatar provided by nekos.life py lib*", inline=False)
     embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
@@ -406,6 +404,60 @@ async def owoify(ctx, text: str=None):
      except discord.HTTPException:
        await ctx.send("Uh oh, a fucky wucky has occured")
 
+@bot.command()
+async def feed(ctx, user: str=None):
+    await ctx.message.delete()
+    print(f'{commandLog}feed')
+    #-----No Mention-----
+    embedNoMen = discord.Embed(colour=hexColor, title="Error",description="No user was mentioned")
+    embedNoMen.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
+    embedNoMen.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+    #-----End-----
+    if user is None:
+      await ctx.send(embed=embedNoMen)
+      return
+    else:
+     embed = discord.Embed(colour=hexColor, title="Feed",description=f"***{bot.user.name}*** *feeds* ***{user}***")
+     embed.set_image(url=nekos.img("feed"))
+     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+     try:
+       await ctx.send(embed=embed)
+     except discord.HTTPException:
+       await ctx.send("An error has occured, are embeds allowed here?")
+
+@bot.command()
+async def poke(ctx, user: str=None):
+    await ctx.message.delete()
+    print(f'{commandLog}poke')
+    #-----No Mention-----
+    embedNoMen = discord.Embed(colour=hexColor, title="Error",description="No user was mentioned")
+    embedNoMen.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
+    embedNoMen.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+    #-----End-----
+    if user is None:
+      await ctx.send(embed=embedNoMen)
+      return
+    else:
+     embed = discord.Embed(colour=hexColor, title="Poke",description=f"***{bot.user.name}*** *pokes* ***{user}***")
+     embed.set_image(url=nekos.img("poke"))
+     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+     try:
+       await ctx.send(embed=embed)
+     except discord.HTTPException:
+       await ctx.send("An error has occured, are embeds allowed here?")
+
+@bot.command()
+async def woof(ctx):
+    await ctx.message.delete()
+    print(f'{commandLog}woof')
+    embed = discord.Embed(colour=hexColor, title="Woof",description="Woof woof!")
+    embed.set_image(url=nekos.img("woof"))
+    embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+    try:
+      await ctx.send(embed=embed)
+    except discord.HTTPException:
+      await ctx.send("An error has occured, are embeds allowed here?")
+
 
 
 
@@ -430,6 +482,18 @@ async def cls(ctx):
     await ctx.message.delete()
     print(f'{commandLog}cls')
     clear()
+
+@bot.command()
+async def avatar(ctx):
+    await ctx.message.delete()
+    print(f'{commandLog}avatar')
+    embed = discord.Embed(colour=hexColor, title="Avatar",description="Random vatar by nekos.life lib")
+    embed.set_image(url=nekos.img("avatar"))
+    embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+    try:
+      await ctx.send(embed=embed)
+    except discord.HTTPException:
+      await ctx.send("An error has occured, are embeds allowed here?")
 
 
 

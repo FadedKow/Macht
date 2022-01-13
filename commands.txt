@@ -17,12 +17,16 @@ smug - Random smug face
 kiss <user> - Kiss mentioned user
 hug <user> - Hug mentioned user
 owoify <text> - Owo-ify your message (r's become w's)
+feed <user> - Feeds mentioned user
+poke <user> - Pokes mentioned user
+woof - Woof woof
 
 
 Misc:
 embed <titletext> <fieldtext> - Sends your message as an embed
 cls - Clears the console window
 test - Test command
+avatar - Get a free avatar provided by nekos.life py lib
 
 Tools:
 iplookip <ip> - Displays info on ip
