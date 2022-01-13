@@ -35,3 +35,4 @@ resolve <domain> - Resolves domain to an ipv4 address
 NSFW:
 nsfw_neko - Random NSFW neko gif
 hentai - Random hentai
+kitsune - Random NSFW kitsune
