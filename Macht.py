@@ -13,6 +13,7 @@ from threading import Thread
 import threading
 import discord
 from datetime import *
+from pathlib import Path
 import time
 from colorama import Fore, Style
 from pystyle import Colors, Colorate, Center, Box #pip3 install pystyle - comes with folder
@@ -34,7 +35,9 @@ resetClr = Style.RESET_ALL
 clearConsole = lambda: os.system('cls')
 hexColor = 0x843BAC
 commandLog = f'{Fore.YELLOW}|Command| {resetClr}{prefix}'
-
+machtPath = rf'{os.getcwd()}\Assets' 
+machtValues = {"patCount":0, "hugCount":0, "cuddleCount":0, "kissCount":0, "pokeCount":0}
+machtValuePath = rf'{os.getcwd()}\Assets\data.json' 
 
 #│
 #―
@@ -63,6 +66,30 @@ def userConnected():
 
 def getUptime():
   return time.time() - startTime
+
+my_file = Path(rf'{machtPath}\data.json')
+def write_json(target_path, target_file, data):
+    if not os.path.exists(target_path):
+        try:
+            os.makedirs(target_path)
+        except Exception as e:
+            print(e)
+            raise
+    if my_file.is_file() == False:
+     with open(os.path.join(target_path, target_file), 'w') as f:
+        json.dump(data, f, sort_keys=True)
+
+def initFiles():
+  write_json(machtPath, 'data.json', machtValues)
+initFiles()
+
+with open(machtValuePath) as vF:
+    dataConfig = json.load(vF)
+    hugCount = dataConfig["hugCount"]
+    patCount = dataConfig["patCount"]
+    kissCount = dataConfig["kissCount"]
+    cuddleCount = dataConfig["cuddleCount"]
+    pokeCount = dataConfig["pokeCount"]
 
 def updateTitle():
     for _ in itertools.repeat(None):
@@ -307,9 +334,18 @@ async def pat(ctx, user: str=None):
       await ctx.send(embed=embedNoMen)
       return
     else:
-     embed = discord.Embed(colour=hexColor, title="Pat",description=f"***{bot.user.name}*** *pats* ***{user}***")
+     embed = discord.Embed(colour=hexColor, title="Pat Pat",description=f"***{bot.user.name}*** *pats* ***{user}***")
      embed.set_image(url=nekos.img("pat"))
-     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+     with open(machtValuePath) as f:
+      try:
+       patCountJson = json.load(f)
+       patCountJson["patCount"] += 1
+       patCount = patCountJson["patCount"]
+       jsonFile = open(machtValuePath, "w+")
+       jsonFile.write(json.dumps(patCountJson))
+       embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=f"That's {patCount} total pats now!")
+      except Exception as e:
+       print(f"\nSomething went wrong, Error: {e}")
      try:
        await ctx.send(embed=embed)
      except discord.HTTPException:
@@ -330,7 +366,16 @@ async def cuddle(ctx, user: str=None):
     else:
      embed = discord.Embed(colour=hexColor, title="Cuddle",description=f"***{bot.user.name}*** *cuddles* ***{user}***")
      embed.set_image(url=nekos.img("cuddle"))
-     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+     with open(machtValuePath) as f:
+      try:
+       cuddleCountJson = json.load(f)
+       cuddleCountJson["cuddleCount"] += 1
+       cuddleCount = cuddleCountJson["cuddleCount"]
+       jsonFile = open(machtValuePath, "w+")
+       jsonFile.write(json.dumps(cuddleCountJson))
+       embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=f"That's {cuddleCount} total cuddles now!")
+      except Exception as e:
+       print(f"\nSomething went wrong, Error: {e}")
      try:
        await ctx.send(embed=embed)
      except discord.HTTPException:
@@ -363,7 +408,16 @@ async def kiss(ctx, user: str=None):
     else:
      embed = discord.Embed(colour=hexColor, title="Kiss <3",description=f"***{bot.user.name}*** *kisses* ***{user}***")
      embed.set_image(url=nekos.img("kiss"))
-     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+     with open(machtValuePath) as f:
+      try:
+       kissCountJson = json.load(f)
+       kissCountJson["kissCount"] += 1
+       kissCount = kissCountJson["kissCount"]
+       jsonFile = open(machtValuePath, "w+")
+       jsonFile.write(json.dumps(kissCountJson))
+       embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=f"That's {kissCount} total kisses now!")
+      except Exception as e:
+       print(f"\nSomething went wrong, Error: {e}")
      try:
        await ctx.send(embed=embed)
      except discord.HTTPException:
@@ -384,7 +438,16 @@ async def hug(ctx, user: str=None):
     else:
      embed = discord.Embed(colour=hexColor, title="Hug",description=f"***{bot.user.name}*** *hugs* ***{user}***")
      embed.set_image(url=nekos.img("hug"))
-     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+     with open(machtValuePath) as f:
+      try:
+       hugCountJson = json.load(f)
+       hugCountJson["hugCount"] += 1
+       hugCount = hugCountJson["hugCount"]
+       jsonFile = open(machtValuePath, "w+")
+       jsonFile.write(json.dumps(hugCountJson))
+       embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=f"That's {hugCount} total hugs now!")
+      except Exception as e:
+       print(f"\nSomething went wrong, Error: {e}")
      try:
        await ctx.send(embed=embed)
      except discord.HTTPException:
@@ -445,7 +508,16 @@ async def poke(ctx, user: str=None):
     else:
      embed = discord.Embed(colour=hexColor, title="Poke",description=f"***{bot.user.name}*** *pokes* ***{user}***")
      embed.set_image(url=nekos.img("poke"))
-     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+     with open(machtValuePath) as f:
+      try:
+       pokeCountJson = json.load(f)
+       pokeCountJson["pokeCount"] += 1
+       pokeCount = pokeCountJson["pokeCount"]
+       jsonFile = open(machtValuePath, "w+")
+       jsonFile.write(json.dumps(pokeCountJson))
+       embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=f"That's {pokeCount} total pokes now!")
+      except Exception as e:
+       print(f"\nSomething went wrong, Error: {e}")
      try:
        await ctx.send(embed=embed)
      except discord.HTTPException:
