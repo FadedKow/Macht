@@ -128,7 +128,7 @@ async def fun(ctx):
     embed = discord.Embed(colour=hexColor, title="Fun Commands")
     embed.add_field(name=f"`{prefix}yoight`", value=f"*Sends yoights*", inline=False)
     embed.add_field(name=f"`{prefix}ara`", value=f"*Sends ara ara in chat*", inline=False)
-    embed.add_field(name=f"`{prefix}gay <user>`", value=f"*Gay rating of mentioned user*", inline=False)
+    embed.add_field(name=f"`{prefix}gay <user> [value]`", value=f"*Gay rating of mentioned user*", inline=False)
     embed.add_field(name=f"`{prefix}cat`", value=f"*Random cat image*", inline=False)
     embed.add_field(name=f"`{prefix}neko`", value=f"*Random neko image*", inline=False)
     embed.add_field(name=f"`{prefix}foxgirl`", value=f"*Random foxgirl image*", inline=False)
@@ -211,7 +211,7 @@ async def ara(ctx):
     await ctx.send("ara ara~")
 
 @bot.command()
-async def gay(ctx, mentionedUser: str=None):
+async def gay(ctx, mentionedUser: str=None, gayValue: int=None):
   await ctx.message.delete()
   #-----Error-----
   embedError = discord.Embed(colour=hexColor, title="Error", description=f"No user has been mentioned")
@@ -225,7 +225,10 @@ async def gay(ctx, mentionedUser: str=None):
     except discord.HTTPException:
      await ctx.send("An error has occured, are embeds allowed here?");return
   else: pass
-  gayPercentage = random.randint(0, 100)
+  if gayValue is None:
+    gayPercentage = random.randint(0, 100)
+  else:
+    gayPercentage = gayValue
   if mentionedUser == bot.user.name:
     gayPercentage = 0
   embed = discord.Embed(colour=hexColor, title="Gay Meter", description=f"**{mentionedUser}** is **{gayPercentage}% gay**")
@@ -597,7 +600,7 @@ async def hentai(ctx):
 async def kitsune(ctx):
     await ctx.message.delete()
     print(f'{commandLog}kitsune')
-    embed = discord.Embed(colour=hexColor, title="NSFW Kitsune",description="A random NSFW kitsune image by nekos.life lib")
+    embed = discord.Embed(colour=hexColor, title="Kitsune",description="A random kitsune image by nekos.life lib")
     embed.set_image(url=nekos.img("lewdk"))
     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:

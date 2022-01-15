@@ -7,7 +7,7 @@ NSFW - Displays NSFW commands
 Fun:
 yoight - Sends yoights
 ara - Sends ara ara in chat
-gay <user> - Gay rating of mentioned user
+gay <user> [value] - Gay rating of mentioned user
 cat - Random cat image
 neko - Random neko image
 foxgirl - Random foxgirl image
