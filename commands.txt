@@ -36,3 +36,4 @@ NSFW:
 nsfw_neko - Random NSFW neko gif
 hentai - Random hentai
 kitsune - Random NSFW kitsune
+nsfw_avatar - Random NSFW avatar

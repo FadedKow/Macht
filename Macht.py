@@ -186,6 +186,7 @@ async def nsfw(ctx):
     embed.add_field(name=f"`{prefix}nsfw_neko`", value=f"*Random NSFW neko gif*", inline=False)
     embed.add_field(name=f"`{prefix}hentai`", value=f"*Random hentai*", inline=False)
     embed.add_field(name=f"`{prefix}kitsune`", value=f"*Random NSFW kitsune*", inline=False)
+    embed.add_field(name=f"`{prefix}nsfw_avatar`", value=f"*Random NSFW avatar*", inline=False)
     embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
@@ -602,6 +603,18 @@ async def kitsune(ctx):
     print(f'{commandLog}kitsune')
     embed = discord.Embed(colour=hexColor, title="Kitsune",description="A random kitsune image by nekos.life lib")
     embed.set_image(url=nekos.img("lewdk"))
+    embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+    try:
+      await ctx.send(embed=embed)
+    except discord.HTTPException:
+      await ctx.send("An error has occured, are embeds allowed here?")
+
+@bot.command()
+async def nsfw_avatar(ctx):
+    await ctx.message.delete()
+    print(f'{commandLog}nsfw_avatar')
+    embed = discord.Embed(colour=hexColor, title="NSFW Avatar",description="Random NSFW avatar by nekos.life lib")
+    embed.set_image(url=nekos.img("nsfw_avatar"))
     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
       await ctx.send(embed=embed)
