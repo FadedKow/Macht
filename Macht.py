@@ -1,7 +1,7 @@
 import time
 import os
 import colorama
-import psutil
+#import psutil
 import json
 import requests
 import math
@@ -16,7 +16,7 @@ from datetime import *
 from pathlib import Path
 import time
 from colorama import Fore, Style
-from pystyle import Colors, Colorate, Center, Box #pip3 install pystyle - comes with folder
+#from pystyle import Colors, Colorate, Center, Box #pip3 install pystyle - comes with folder
 from discord.ext import commands
 from discord.ext.commands import CommandNotFound
 
@@ -37,7 +37,7 @@ hexColor = 0x843BAC
 commandLog = f'{Fore.YELLOW}|Command| {resetClr}{prefix}'
 machtPath = rf'{os.getcwd()}\Assets' 
 machtValues = {"patCount":0, "hugCount":0, "cuddleCount":0, "kissCount":0, "pokeCount":0}
-machtValuePath = rf'{os.getcwd()}\Assets\data.json' 
+machtValuePath = rf'{os.getcwd()}\Assets\data.json'
 
 #│
 #―
@@ -93,7 +93,7 @@ with open(machtValuePath) as vF:
 
 def updateTitle():
     for _ in itertools.repeat(None):
-     os.system("title Macht V1.0 │ "+ str(math.floor(getUptime())) +" sec") #Removing math.floor decreases memory usage
+     os.system("title Macht 1.0 │ "+ str(math.floor(getUptime())) +" sec") #Removing math.floor decreases memory usage
      pass
      time.sleep(0.5)
 
@@ -184,6 +184,7 @@ async def misc(ctx):
     embed.add_field(name=f"`{prefix}cls`", value=f"*Clears the console window*", inline=False)
     embed.add_field(name=f"`{prefix}test`", value=f"*Test command*", inline=False)
     embed.add_field(name=f"`{prefix}avatar`", value=f"*Get a free avatar provided by nekos.life py lib*", inline=False)
+    embed.add_field(name=f"`{prefix}autocls <True/False>`", value=f"*Auto clear the console every 30 minutes*", inline=False)
     embed.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
     embed.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
     try:
@@ -559,6 +560,28 @@ async def cls(ctx):
     await ctx.message.delete()
     print(f'{commandLog}cls')
     clear()
+
+autoClsToggle = False
+def autoClsClear():
+  if autoClsToggle == True:
+    for _ in itertools.repeat(1800, None):
+     clear()
+@bot.command()
+async def autocls(ctx, toggled: bool=False):
+    await ctx.message.delete()
+    clear()
+    print(f'{commandLog}autocls {toggled}')
+    embedNotify = discord.Embed(colour=hexColor, title="Auto CLS",description=f"Auto CLS Set To **{toggled}**")
+    embedNotify.set_thumbnail(url="https://i.imgur.com/pVbTpks.png")
+    embedNotify.set_footer(icon_url="https://i.imgur.com/pVbTpks.png",text=" Macht Selfbot - Made by Founder#8300")
+    if toggled == True:
+      autoClsClear.autoClsToggle = True
+      t = threading.Timer(0.5, autoClsClear)
+      t.start()
+      await ctx.send(embed=embedNotify)
+    else:
+      autoClsClear.autoClsToggle = False
+      await ctx.send(embed=embedNotify)
 
 @bot.command()
 async def avatar(ctx):

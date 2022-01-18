@@ -27,6 +27,7 @@ embed <titletext> <fieldtext> - Sends your message as an embed
 cls - Clears the console window
 test - Test command
 avatar - Get a free avatar provided by nekos.life py lib
+autocls <True/False> - Auto clear the console every 30 minutes
 
 Tools:
 iplookip <ip> - Displays info on ip
