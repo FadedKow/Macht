@@ -7,3 +7,8 @@ Why Macht?
 * Nice embeds
 * Useful/Fun commands
 * Why not
+
+Prerequisites (Enter these in command prompt):
+`pip install colorama`
+`pip install discord.py`
+`pip install requests`
