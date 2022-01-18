@@ -563,7 +563,7 @@ async def cls(ctx):
 
 autoClsToggle = False
 def autoClsClear():
-  if autoClsToggle == True:
+  while autoClsToggle == True:
     for _ in itertools.repeat(1800, None):
      clear()
 @bot.command()
