@@ -12,3 +12,5 @@ Prerequisites (Enter these in command prompt):
 `pip install colorama`
 `pip install discord.py`
 `pip install requests`
+
+Made repo open source, discontinued
