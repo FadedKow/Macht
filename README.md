@@ -13,4 +13,5 @@ Prerequisites (Enter these in command prompt):
 `pip install discord.py`
 `pip install requests`
 
-Made repo open source, discontinued
+Made repo open source, discontinued.
+Embeds don't work on selfbots anymore, so some commands won't work and I'm not gonna bother fixing them.
